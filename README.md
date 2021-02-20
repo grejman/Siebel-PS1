@@ -120,6 +120,9 @@
 
 	## Set Log Level of Component
 	Set-SBLGtwyEvtLogLevel -Credential $c -Value 1 -CompAliasName eCommunicationsObjMgr_enu -Password SADMIN
+	
+	## Cleanup older that 1 day log files
+	Remove-SBLSrvrLogs  -Credential $c -Type AI,EmailResponce,Log,FDR,Crash,LOGARCHIVE -AddMin 1440
 
 	## Start\Stop Get Siebel Server
 	Stop-SBLServer -Credential $c -Verbose
