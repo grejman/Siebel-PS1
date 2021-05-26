@@ -57,24 +57,33 @@
 * **Siebel Services**
 
 	Stop-SBLServer
+	
 	Start-SBLServer
+	
 	Get-SBLServer
+	
 	Remove-SBLService
+	
 	Add-SBLService
 
 * **Backup Gateway**
 
 	Backup-SBLGtwy
+	
 	Stop-SBLGtwyServer
+	
 	Start-SBLGtwyServer
+	
 	Get-SBLGtwyServer
 	
-
-* **Siebel AI Service **
+* **Siebel AI Servicve**
 
 	Set-SBLAIAuthToken - Change the AI Auth Token on a AI tomcat service
+	
 	Stop-SBLAIServer
+	
 	Start-SBLAIServer
+	
 	Get-SBLAIServer
 
 * **Siebel Server Components**
@@ -85,16 +94,19 @@
 * **Siebel Gateway Param**
 
 	Set-SBLGtwyEnvParam
+	
 	Set-SBLGtwySubSysParam
 
 * **Siebel Gateway Log Level**
 
 	Set-SBLGtwyEvtLogLevel
+	
 	Get-SBLGtwyEvtLogLevel
 
 * **Siebel Logs**
 
 	Get-SBLSrvrLogs
+	
 	Remove-SBLSrvrLogs
 	 
 
