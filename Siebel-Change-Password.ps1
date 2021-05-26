@@ -14,12 +14,13 @@
 ## 2) Backup Gateway.
 ## 3) Change Gateway Passwords.
 ## 4) Change Gateway SybSys Passwords.
-## 5) Stop Siebel Servers.
+## 5) Stop Siebel Servers & AI.
 ## 6.1) Change Siebel DB Password (SADMIN\SIEBEL\ADSIUSER)
 ## 6.2) Change Domain Passwords (SADMIN)
 ## 7) Remove Siebel Services
 ## 8) Create Siebel Servers, with new credentials
-## 9) Start Siebel Servers
+## 9) Set AI Auth Token, with new credentials
+## 10) Start Siebel Servers & AI
 
 ## 0) Generate Passwords
 ## https://www.roboform.com/password-generator  
@@ -64,10 +65,13 @@ Set-SBLGtwyEnvParam -Credential $c -Name "password"     -Value $pnSADMIN -Passwo
 Set-SBLGtwySubSysParam  -Credential $c -SybSystems "LDAPEASSecAdpt"   -Name "SharedDBPassword"     -Value $pnADSIUSER      -Password $pSADMIN -Verbose
 Set-SBLGtwySubSysParam  -Credential $c -SybSystems "LDAPEASSecAdpt"   -Name "ApplicationPassword"  -Value $pnSADMIN        -Password $pSADMIN -Verbose
 
-## 5) Stop Siebel Servers
-## ----------------------
-Stop-SBLServer  -Credential $c -Verbose
-Get-SBLServer   -Credential $c -Verbose
+## 5) Stop Siebel Servers & AI Services
+## ------------------------------------
+Stop-SBLServer   -Credential $c -Verbose
+Get-SBLServer    -Credential $c -Verbose
+
+Stop-SBLAIServer -Credential $sc -Verbose
+Get-SBLAIServer  -Credential $sc -Verbose
 
 ## 6.1) Change Siebel DB Password (SADMIN\SIEBEL\ADSIUSER) - Must be 32bit mode
 ## ----------------------------------------------------------------------------
@@ -101,7 +105,14 @@ Remove-SBLService -Credential $sc -Verbose
 ## ------------------------------------------------------------------------------------------------------------------------
 Add-SBLService -Credential $sc -NewPassword $pnSADMIN -ServiceUserPassword $pnSADMIN -Verbose -Servers $SBLAllServers
 
+## 9) Set AI Auth Token, with new credentials
+## ----------------------------------------------
+Set-SBLAIAuthToken -Credential $sc -NewPassword $pnSADMIN -Verbose
+
 ## 10) Start Siebel Servers
 ## ------------------------
 Start-SBLServer -Credential $sc -Verbose
 Get-SBLServer   -Credential $sc -Verbose
+
+Start-SBLAIServer -Credential $sc -Verbose
+Get-SBLAIServer   -Credential $sc -Verbose
