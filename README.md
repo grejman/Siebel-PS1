@@ -9,31 +9,28 @@
 
 2) Edit the Mobule and set the Default & Env section, the section contains the host and server names for the enviroment as well the location components are installed.
 
-`
-  $SBLAppIntPath        = "d:\Oracle\Siebel\ai"
-  $SBLGtwyPath          = "d:\Oracle\Siebel\gw\gtwysrvr"
-  $SBLGtwyPort          = "9999"
-  $SBLSrvrPath          = "d:\Oracle\Siebel\ses\SiebSrvr" 
-  $SBLTempPath          = "c:\Temp\"  
-  $SBLClientPath        = "C:\Oracle\Siebel\16.0.0.0.0\Client"  
-  ...
-`
+		...
+		$SBLAppIntPath        = "d:\Oracle\Siebel\ai"\
+		$SBLGtwyPath          = "d:\Oracle\Siebel\gw\gtwysrvr"\
+		$SBLGtwyPort          = "9999"\
+		$SBLSrvrPath          = "d:\Oracle\Siebel\ses\SiebSrvr"\
+		$SBLTempPath          = "c:\Temp\"\
+		$SBLClientPath        = "C:\Oracle\Siebel\16.0.0.0.0\Client"\
+		...
 
-`
-  ...
-  "QA" {
-    $global:SBLHost       = "siebel.yy.com"
-    $global:SBLGtwyServer = "a123dwawi"
-    $global:SBLAIServers  = "a123dwawi"
-    $global:SBLServers    = "a123dwawi"
-    $global:SBLAllServers = "a123dwawi"
-    $global:SBLGtwyPath   = "d:\Oracle\Siebel\gw\gtwysrvr"
-    Break
-  }
-  "P-Prod" {
-  ...
-`
-  
+		...\
+		"QA" {\
+		  $global:SBLHost       = "siebel.yy.com"\
+		  $global:SBLGtwyServer = "a123dwawi"\
+		  $global:SBLAIServers  = "a123dwawi"\
+		  $global:SBLServers    = "a123dwawi"\
+		  $global:SBLAllServers = "a123dwawi"\
+		  $global:SBLGtwyPath   = "d:\Oracle\Siebel\gw\gtwysrvr"\
+		  Break\
+		}\
+		"P-Prod" {\
+		...
+
 3) Install the module:
   
   **Import-Module** -FullyQualifiedName "Siebel-IP19-Module.psm1"
@@ -56,59 +53,45 @@
 
 * **Siebel Services**
 
-	Stop-SBLServer
-	
-	Start-SBLServer
-	
-	Get-SBLServer
-	
-	Remove-SBLService
-	
+	Stop-SBLServer\
+	Start-SBLServer\
+	Get-SBLServer\	
+	Remove-SBLService\	
 	Add-SBLService
 
 * **Backup Gateway**
 
-	Backup-SBLGtwy
-	
-	Stop-SBLGtwyServer
-	
-	Start-SBLGtwyServer
-	
+	Backup-SBLGtwy\	
+	Stop-SBLGtwyServer\	
+	Start-SBLGtwyServer\	
 	Get-SBLGtwyServer
 	
 * **Siebel AI Servicve**
 
-	Set-SBLAIAuthToken - Change the AI Auth Token on a AI tomcat service
-	
-	Stop-SBLAIServer
-	
-	Start-SBLAIServer
-	
+	Set-SBLAIAuthToken - Change the AI Auth Token on a AI tomcat service\
+	Stop-SBLAIServer\	
+	Start-SBLAIServer\	
 	Get-SBLAIServer
 
 * **Siebel Server Components**
 
-	Set-SBLSrvrComp
+	Set-SBLSrvrComp\
 	Get-SBLSrvrComp
 
 * **Siebel Gateway Param**
 
-	Set-SBLGtwyEnvParam
-	
-	Set-SBLGtwySubSysParam
+	Set-SBLGtwyEnvParam\
+	Set-SBLGtwySubSysParam\
 
 * **Siebel Gateway Log Level**
 
-	Set-SBLGtwyEvtLogLevel
-	
+	Set-SBLGtwyEvtLogLevel\
 	Get-SBLGtwyEvtLogLevel
 
 * **Siebel Logs**
 
-	Get-SBLSrvrLogs
-	
+	Get-SBLSrvrLogs\
 	Remove-SBLSrvrLogs
-	 
 
 **Note**: For help on the input parameters use the PowerShell command  "Get-Help {MethodName}"
 
