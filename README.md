@@ -11,7 +11,8 @@
 
 `
   $SBLAppIntPath        = "d:\Oracle\Siebel\ai"
-  $SBLGtwyPath          = "d:\Oracle\Siebel\gw\gtwysrvr"  
+  $SBLGtwyPath          = "d:\Oracle\Siebel\gw\gtwysrvr"
+  $SBLGtwyPort          = "9999"
   $SBLSrvrPath          = "d:\Oracle\Siebel\ses\SiebSrvr" 
   $SBLTempPath          = "c:\Temp\"  
   $SBLClientPath        = "C:\Oracle\Siebel\16.0.0.0.0\Client"  
@@ -67,6 +68,14 @@
 	Stop-SBLGtwyServer
 	Start-SBLGtwyServer
 	Get-SBLGtwyServer
+	
+
+* **Siebel AI Service **
+
+	Set-SBLAIAuthToken - Change the AI Auth Token on a AI tomcat service
+	Stop-SBLAIServer
+	Start-SBLAIServer
+	Get-SBLAIServer
 
 * **Siebel Server Components**
 
@@ -88,7 +97,7 @@
 	Get-SBLSrvrLogs
 	Remove-SBLSrvrLogs
 	 
-   
+
 **Note**: For help on the input parameters use the PowerShell command  "Get-Help {MethodName}"
 
 ## Example
@@ -133,6 +142,9 @@
 	Stop-SBLGtwServer -Credential $c -Verbose
 	Get-SBLGtwyServer -Credential $c -Verbosey
 	Start-SBLGtwyServer -Credential $c -Verbose
+
+	## Change the AI Auth Token
+	Set-SBLAIAuthToken -Credential $c -NewPassword xyz -Verbose
 
 	## Call WFP 
 	##[Net.ServicePointManager]::SecurityProtocol = "Tls, Tls11, Tls12"
